@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UAssist — Project coordination for game makers</title>
+  <meta name="description" content="UAssist turns build plans into living kanbans, anchors tasks to Unity and Blender assets, and dispatches AI agents to isolated git worktrees." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist</div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero hero-tall">
+    <div class="wrap">
+      <h1>Stop losing the game inside your tools.</h1>
+      <p class="lede">UAssist is a local coordinator that sits between Unity, Blender, and the AI agents that help you build. It turns your Markdown plan into a living board, anchors every task to a real file, and keeps agents from touching your working tree directly.</p>
+      <div class="hero-actions">
+        <a class="cta" href="install.html">Install UAssist</a>
+        <a class="cta-secondary" href="asteroid-run.html">Read the journey</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="screenshot-grid">
+        <div class="screen-card">
+          <div class="mock-window">
+            <div class="mock-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="title">UAssist / Board</span></div>
+            <div class="mock-body board-mock">
+              <div class="grid-head"><span></span><span>open</span><span>active</span><span>blocked</span><span>review</span><span>done</span></div>
+              <div class="grid-row"><span class="cat">Systems</span><span class="card c-human">Player controller</span><span class="card c-agent">Asteroid field</span><span></span><span></span><span class="card c-done">Init project</span></div>
+              <div class="grid-row"><span class="cat">Gameplay</span><span class="card c-human">Weapon HUD</span><span class="card c-agent">Drone AI</span><span class="card c-blocker">Turret model</span><span></span><span></span></div>
+              <div class="grid-row"><span class="cat">UI</span><span></span><span class="card c-human">Title screen</span><span></span><span class="card c-agent">Session store</span><span></span></div>
+            </div>
+          </div>
+          <p class="cap">Plan, status, and ownership on one board.</p>
+        </div>
+        <div class="screen-card">
+          <div class="mock-window">
+            <div class="mock-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="title">UAssist / Project</span></div>
+            <div class="mock-body project-mock">
+              <div class="row"><span class="k">Unity path</span><span class="v ok">/Projects/AsteroidRun</span></div>
+              <div class="row"><span class="k">Last scan</span><span class="v">12 assets, 4 scripts, 2 prefabs</span></div>
+              <div class="row"><span class="k">Status</span><span class="v ok">workspace linked</span></div>
+              <div class="pills"><span class="pill p-blue">42 assets</span><span class="pill p-green">linked</span></div>
+            </div>
+          </div>
+          <p class="cap">Workspace linked and scanned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow">
+      <h2>Built for the messy middle</h2>
+      <p class="lead">Game development is not a clean pipeline. It is a loop of decisions, experiments, and half-finished files. UAssist gives that loop a surface you can see and a record you can trust.</p>
+    </div>
+    <div class="wrap">
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Plans become cards</h3>
+          <p>Write your game plan in Markdown. Import it. UAssist turns phases into milestones, bullets into cards, and exit gates into acceptance criteria.</p>
+        </div>
+        <div class="feature">
+          <h3>Tasks anchor to objects</h3>
+          <p>A card about a weapon anchors to the Blender file, the prefab, and the C# script. Nothing floats in abstraction.</p>
+        </div>
+        <div class="feature">
+          <h3>Agents stay isolated</h3>
+          <p>Dispatch opencode, Claude Code, or any CLI agent. They run in their own git worktree. What comes back is a diff you review before accepting.</p>
+        </div>
+        <div class="feature">
+          <h3>Health lane watches</h3>
+          <p>Validators emit items for compile errors, missing references, licence gaps, and budget overruns. Click one and land on the exact asset.</p>
+        </div>
+        <div class="feature">
+          <h3>Docs with memory</h3>
+          <p>Write architecture notes in the Docs page and discuss them with the assistant. The chat is tied to the project, not to a browser tab.</p>
+        </div>
+        <div class="feature">
+          <h3>Ship the game</h3>
+          <p>Export knows your asset bundles and your licences. Credits are generated from the catalog, not reconstructed at the last minute.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2>What it is not</h2>
+      <p class="lead">UAssist does not replace Unity, Blender, or your IDE. It is a thin layer that keeps the work honest. It is local, plain-text, and fast enough to keep up with you.</p>
+      <div class="aside">It also does not pretend to plan for you. You write the plan. UAssist keeps it alive.</div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="wrap">
+      <h2>See it in action</h2>
+      <p class="lead">Asteroid Run is a small scrolling shooter built with UAssist, Unity, and Blender. The ebook walks the full project from one sentence to a shipped build.</p>
+      <a class="cta" href="asteroid-run.html">Read Asteroid Run</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>

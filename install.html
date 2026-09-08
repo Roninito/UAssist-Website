@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Install UAssist</title>
+  <meta name="description" content="Install UAssist locally, start and stop the server, and add it to your dock on macOS, Linux, or Windows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist <span>/ Install</span></div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Install UAssist</h1>
+      <p class="lede">UAssist runs locally with Bun and serves its own web UI. Nothing leaves your machine unless you choose an external AI provider.</p>
+    </div>
+  </section>
+
+  <article class="wrap narrow">
+
+    <section id="requirements">
+      <h2>What you need</h2>
+      <ul>
+        <li><strong>Bun 1.3+</strong> — <code>bun --version</code> should print a version.</li>
+        <li><strong>Unity</strong> and optionally <strong>Blender</strong> for the projects you want to coordinate.</li>
+        <li><strong>Git</strong> — agents use isolated worktrees.</li>
+        <li>(Optional) <strong>Ollama</strong> or <strong>LM Studio</strong> for local AI chat.</li>
+      </ul>
+    </section>
+
+    <section id="clone">
+      <h2>Clone and install</h2>
+      <pre>git clone https://github.com/RastaCamp/uassist.git
+cd uassist
+bun install</pre>
+      <div class="tip"><p>Run <code>bun test</code> to verify everything is wired correctly before you start real work.</p></div>
+    </section>
+
+    <section id="server">
+      <h2>Start and stop the server</h2>
+      <p>The server is one Bun process. It hosts the REST API, WebSocket, and web UI.</p>
+      <pre>bun run start     # run once
+bun run dev       # run with --watch</pre>
+      <p>The default port is <code>7373</code>. Open <code>http://127.0.0.1:7373</code> in your browser.</p>
+      <p>To stop, press <code>Ctrl-C</code> in the terminal.</p>
+    </section>
+
+    <section id="load">
+      <h2>Load a project</h2>
+      <p>UAssist state lives inside your target project’s <code>.uassist/</code> directory. From that project root:</p>
+      <pre>uassist init
+uassist plan import design/plan.md
+uassist serve       # opens http://127.0.0.1:7373 automatically</pre>
+      <div class="callout"><p>If <code>uassist</code> is not on your path yet, use <code>bun run packages/cli/src/uassist.ts</code> from the UAssist repo.</p></div>
+    </section>
+
+    <section id="desktop">
+      <h2>Add to dock or desktop</h2>
+
+      <h3>macOS</h3>
+      <p>Create a small AppleScript wrapper and save it as an app with Script Editor:</p>
+      <pre>do shell script "cd /path/to/uassist && bun run start"</pre>
+      <p>Save as Application, then drag it to the Dock. Or use a launcher like <a href="https://www.raycast.com" target="_blank" rel="noopener">Raycast</a> with a shell command alias.</p>
+
+      <h3>Linux</h3>
+      <p>Create a <code>.desktop</code> entry:</p>
+      <pre>[Desktop Entry]
+Name=UAssist
+Exec=bun run --cwd /path/to/uassist start
+Type=Application
+Terminal=true</pre>
+      <p>Place it in <code>~/.local/share/applications/</code>. It will show up in your launcher.</p>
+
+      <h3>Windows</h3>
+      <p>Create a batch file and pin it to the taskbar or Start menu:</p>
+      <pre>@echo off
+cd /d C:\path\to\uassist
+bun run start</pre>
+      <p>For a nicer shortcut, create a <code>.lnk</code> pointing to the batch file and pin it.</p>
+    </section>
+
+    <section id="update">
+      <h2>Update UAssist</h2>
+      <p>UAssist is a git repo. Updating is one command:</p>
+      <pre>cd /path/to/uassist
+git pull origin main
+bun install</pre>
+      <div class="callout"><p>Your projects are safe. UAssist state lives inside each target project’s <code>.uassist/</code> folder, not inside the UAssist install directory.</p></div>
+    </section>
+
+  </article>
+
+  <footer>
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>
