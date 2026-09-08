@@ -100,6 +100,44 @@
     </div>
   </section>
 
+  <section class="section agents-section">
+    <div class="wrap narrow">
+      <h2>Agents that work like teammates</h2>
+      <p class="lead">UAssist talks to real CLI agents. Today that is <strong>Claude Code</strong> and <strong>opencode</strong>. More adapters will come. The agent does not live inside UAssist; it runs on your machine, sees only the context UAssist gives it, and returns a diff you can accept or reject.</p>
+    </div>
+    <div class="wrap">
+      <div class="agent-grid">
+        <div class="agent-card">
+          <h3>Context is automatic</h3>
+          <p>When you dispatch a card, UAssist builds a context packet: the card description, its anchors, related files, project conventions, and recent chat history. The agent starts with the same briefing you would give a collaborator. You do not paste code into a chat window and hope it remembers.</p>
+        </div>
+        <div class="agent-card">
+          <h3>Worktrees keep you safe</h3>
+          <p>Agents never write to your main working tree. UAssist creates an isolated git worktree for every job. The agent edits there. When it finishes, you see a unified diff. Accept it and the change merges in. Reject it and the worktree disappears. Your project never gets a surprise edit.</p>
+        </div>
+        <div class="agent-card">
+          <h3>Agents touch the boring parts</h3>
+          <p>Code is perfect for agents because you can verify it by running it. UAssist sends agents after scripts, shaders, JSON config, and small Blender Python tools. You keep the creative decisions: composition, feel, and whether the result is good enough.</p>
+        </div>
+        <div class="agent-card">
+          <h3>Unity and Blender in one loop</h3>
+          <p>A single card can anchor to both a Unity script path and a Blender file. The agent can update the C# controller and the model sockets in the same job. When it returns, you rescanned the workspace and both assets are catalogued. The boundary between the engines becomes just another file path.</p>
+        </div>
+        <div class="agent-card">
+          <h3>Chat that knows the project</h3>
+          <p>Every card and every doc page has its own chat thread. Ask about a card, ask the assistant to rewrite the description, or ask it to split a vague task into smaller ones. The chat uses the project state, not generic memory, and it can create new cards directly on the board.</p>
+        </div>
+        <div class="agent-card">
+          <h3>Agents ask when unsure</h3>
+          <p>If an agent hits an ambiguous requirement, it stops and asks instead of guessing. Your answer can be saved as a project convention. The next time a similar card comes up, the agent already knows the rule. Knowledge compounds.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap narrow">
+      <div class="aside">The split is deliberate: agents write the verifiable parts, humans judge the result. That is how you move fast without losing control.</div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap narrow">
       <h2>What it is not</h2>

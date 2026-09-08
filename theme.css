@@ -355,27 +355,40 @@ pre code {
 }
 
 /* ---------- features ---------- */
-.feature-grid {
+.feature-grid,
+.agent-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-md);
   margin-top: var(--gap-lg);
 }
 
-.feature {
+.feature,
+.agent-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--gap-md);
 }
 
-.feature p {
+.agents-section {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.agents-section .agent-card {
+  background: var(--bg);
+}
+
+.feature p,
+.agent-card p {
   margin-bottom: 0;
   font-size: 15px;
 }
 
 @media (max-width: 900px) {
-  .feature-grid {
+  .feature-grid,
+  .agent-grid {
     grid-template-columns: 1fr;
   }
 }
