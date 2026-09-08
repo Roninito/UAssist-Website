@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Server — How UAssist hosts the web UI</title>
+  <meta name="description" content="UAssist runs a single local Bun server that hosts the REST API, WebSocket event stream, and web UI for every project you coordinate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist <span>/ Server</span></div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>One server per project.</h1>
+      <p class="lede">UAssist is not a web app you log into. It is a local Bun process that serves the UI, the API, and the real-time event stream for one project root at a time.</p>
+    </div>
+  </section>
+
+  <article class="wrap narrow">
+
+    <section id="single-process">
+      <h2>A single process, three responsibilities</h2>
+      <p>When you run <code>bun run start</code>, UAssist starts one Bun server. That process does everything:</p>
+      <ul>
+        <li><strong>REST API:</strong> cards, milestones, jobs, workspace, docs, and suggestions.</li>
+        <li><strong>WebSocket:</strong> live board updates when anything changes.</li>
+        <li><strong>Web UI:</strong> the board, detail panels, docs editor, and settings pages.</li>
+      </ul>
+      <p>There is no separate frontend build step in development. Bun serves the TypeScript and HTML directly. When you ship, you can build a static bundle with <code>bun run build:web</code>.</p>
+    </section>
+
+    <section id="project-root">
+      <h2>The server follows the project root</h2>
+      <p>UAssist state lives inside the target project, not inside the UAssist install directory. When you start the server from your game project:</p>
+      <pre>cd /Projects/AsteroidRun
+uassist serve</pre>
+      <p>The server reads and writes the <code>.uassist/</code> directory in that project. The JSON files there are the source of truth. The SQLite database is a cache.</p>
+      <div class="callout">
+        <p><strong>Your projects are portable.</strong> Move the directory, clone it on another machine, or delete UAssist entirely. As long as you have the <code>.uassist/</code> JSON files, you can rebuild everything.</p>
+      </div>
+    </section>
+
+    <section id="loopback">
+      <h2>Loopback by default</h2>
+      <p>The server binds to <code>127.0.0.1:7373</code> by default. There is no authentication. The security model is that nobody outside your machine can reach it.</p>
+      <p>If you pass <code>--unsafe-bind</code>, it will bind to <code>0.0.0.0</code>, but it warns loudly first. Do not use that unless you know what you are doing.</p>
+    </section>
+
+    <section id="port-reclaim">
+      <h2>Port reclaiming</h2>
+      <p>If 7373 is already taken, UAssist tries to identify the occupant. If it is another UAssist server for the same project, it stops the stale one and takes the port. If it is a different project or an unknown process, UAssist leaves it alone and picks the next free port in the range.</p>
+    </section>
+
+    <section id="between-engines">
+      <h2>Sitting between engines</h2>
+      <p>Unity and Blender do not know about each other. UAssist does. The server scans both workspaces, indexes assets by path and type, and exposes a single catalog to the web UI. A card can anchor to a Unity prefab and a Blender mesh at the same time because UAssist tracks both in one store.</p>
+    </section>
+
+    <section id="scaling">
+      <h2>It stays small on purpose</h2>
+      <p>UAssist is not trying to become a platform. It is a local wrapper around your tools. One process, one project, one browser tab. That constraint is the feature. It keeps the tool honest.</p>
+      <div class="aside">The 37signals approach applies here: solve the problem with less. A dedicated server per project is less infrastructure, not more.</div>
+    </section>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>

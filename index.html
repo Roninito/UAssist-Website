@@ -18,6 +18,11 @@
       <nav>
         <a href="index.html">Overview</a>
         <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
         <a href="asteroid-run.html">Asteroid Run</a>
       </nav>
     </div>
@@ -73,23 +78,23 @@
     <div class="wrap">
       <div class="feature-grid">
         <div class="feature">
-          <h3>Plans become cards</h3>
+          <h3><a href="kanban.html">Plans become cards</a></h3>
           <p>Write your game plan in Markdown. Import it. UAssist turns phases into milestones, bullets into cards, and exit gates into acceptance criteria.</p>
         </div>
         <div class="feature">
-          <h3>Tasks anchor to objects</h3>
+          <h3><a href="tasks.html">Tasks anchor to objects</a></h3>
           <p>A card about a weapon anchors to the Blender file, the prefab, and the C# script. Nothing floats in abstraction.</p>
         </div>
         <div class="feature">
-          <h3>Agents stay isolated</h3>
+          <h3><a href="agents.html">Agents stay isolated</a></h3>
           <p>Dispatch opencode, Claude Code, or any CLI agent. They run in their own git worktree. What comes back is a diff you review before accepting.</p>
         </div>
         <div class="feature">
-          <h3>Health lane watches</h3>
+          <h3><a href="kanban.html">Health lane watches</a></h3>
           <p>Validators emit items for compile errors, missing references, licence gaps, and budget overruns. Click one and land on the exact asset.</p>
         </div>
         <div class="feature">
-          <h3>Docs with memory</h3>
+          <h3><a href="ai.html">Docs with memory</a></h3>
           <p>Write architecture notes in the Docs page and discuss them with the assistant. The chat is tied to the project, not to a browser tab.</p>
         </div>
         <div class="feature">
@@ -102,8 +107,8 @@
 
   <section class="section agents-section">
     <div class="wrap narrow">
-      <h2>Agents that work like teammates</h2>
-      <p class="lead">UAssist talks to real CLI agents. Today that is <strong>Claude Code</strong> and <strong>opencode</strong>. More adapters will come. The agent does not live inside UAssist; it runs on your machine, sees only the context UAssist gives it, and returns a diff you can accept or reject.</p>
+      <h2><a href="agents.html">Agents that work like teammates</a></h2>
+      <p class="lead">UAssist talks to real CLI agents. Today that is <a href="agents.html">Claude Code and opencode</a>. More adapters will come. The agent does not live inside UAssist; it runs on your machine, sees only the context UAssist gives it, and returns a diff you can accept or reject.</p>
     </div>
     <div class="wrap">
       <div class="agent-grid">
@@ -134,15 +139,14 @@
       </div>
     </div>
     <div class="wrap narrow">
-      <div class="aside">The split is deliberate: agents write the verifiable parts, humans judge the result. That is how you move fast without losing control.</div>
+      <div class="aside">The split is deliberate: agents write the verifiable parts, humans judge the result. That is how you move fast without losing control. <a href="agents.html">Read the full agents guide →</a></div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap narrow">
-      <h2>What it is not</h2>
-      <p class="lead">UAssist does not replace Unity, Blender, or your IDE. It is a thin layer that keeps the work honest. It is local, plain-text, and fast enough to keep up with you.</p>
-      <div class="aside">It also does not pretend to plan for you. You write the plan. UAssist keeps it alive.</div>
+      <h2><a href="server.html">Local by default</a></h2>
+      <p class="lead">UAssist is not a web app you log into. It is a single <a href="server.html">Bun server process</a> that follows your project root, serves the UI and API, and binds to loopback. Your project files stay on your machine.</p>
     </div>
   </section>
 
@@ -154,9 +158,19 @@
     </div>
   </section>
 
-  <footer>
+  <footer class="site-footer">
     <div class="wrap">
       <span>UAssist — RastaCamp Studio</span>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
       <span>ToolwrightTheme</span>
     </div>
   </footer>

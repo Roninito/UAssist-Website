@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tasks — Cards, anchors, and acceptance criteria</title>
+  <meta name="description" content="UAssist tasks are cards with anchors, status, assignee, and acceptance criteria. Learn how the card interface keeps work tied to real project objects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist <span>/ Tasks</span></div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Tasks that stay tied to the work.</h1>
+      <p class="lede">Every task in UAssist is a card. Cards have status, assignee, anchors, and acceptance criteria. The interface is designed so you always know what object a task is about.</p>
+    </div>
+  </section>
+
+  <article class="wrap narrow">
+
+    <section id="card-anatomy">
+      <h2>The anatomy of a card</h2>
+      <p>A card is more than a sticky note. It is a small contract with the following fields:</p>
+      <ul>
+        <li><strong>Title</strong> — short and specific enough to read on the board.</li>
+        <li><strong>Description</strong> — the real requirement. Often written by the plan importer.</li>
+        <li><strong>Status</strong> — open, active, blocked, review, or done.</li>
+        <li><strong>Category</strong> — Systems, Gameplay, AI, UI, Audio, Art, Narrative, or Infra.</li>
+        <li><strong>Assignee</strong> — human, agent, or unassigned.</li>
+        <li><strong>Priority</strong> — normal or blocker.</li>
+        <li><strong>Anchors</strong> — file paths, assets, or URLs the task touches.</li>
+        <li><strong>Acceptance criteria</strong> — checkboxes that define “done.”</li>
+      </ul>
+    </section>
+
+    <section id="anchors">
+      <h2>Anchors make tasks real</h2>
+      <p>The most important field on a card is the anchor. An anchor ties the task to a concrete object in your project. Examples:</p>
+      <pre>asset: Assets/Scripts/Player/PlayerShip.cs
+asset: Assets/Models/Props/Crate.blend
+asset: Assets/Prefabs/UI/HUD.prefab
+web: design/progressions.md</pre>
+      <p>When a workspace is linked, anchors show a badge: <strong>found</strong> if the path exists, or <strong>not in catalog</strong> if it has moved. This catches stale tasks before they become confusion.</p>
+      <div class="callout">
+        <p><strong>If a task does not have an anchor, it is probably a wish.</strong> Anchors force you to name the thing the task changes.</p>
+      </div>
+    </section>
+
+    <section id="acceptance">
+      <h2>Acceptance criteria</h2>
+      <p>Each card can have a list of acceptance criteria. These are checkboxes. When they are all checked, the card is eligible for done. They are usually imported from plan exit gates:</p>
+      <pre>- [ ] Ship can pitch, yaw, and throttle
+- [ ] Boost drains a visible meter
+- [ ] No compile errors in the Player folder</pre>
+      <p>The criteria live in the JSON mirror, so they are versioned with the rest of the project.</p>
+    </section>
+
+    <section id="detail-panel">
+      <h2>The detail panel</h2>
+      <p>Click any card on the board to open the detail panel. From there you can:</p>
+      <ul>
+        <li>Edit the description and acceptance criteria.</li>
+        <li>Change status, assignee, or category.</li>
+        <li>Attach or remove anchors.</li>
+        <li>View linked cards and their blocking relationships.</li>
+        <li>Open the project chat thread for this card.</li>
+        <li>Dispatch an agent job.</li>
+      </ul>
+    </section>
+
+    <section id="blocking">
+      <h2>Blocking and linking</h2>
+      <p>Cards can block other cards. A card about the enemy base class blocks the cards for drones and turrets. Blocked cards are dimmed until their dependency moves forward. This keeps the board honest about what can actually be worked on.</p>
+      <div class="aside">A clear board is a clear project. If you cannot see the dependencies, you are planning with hope.</div>
+    </section>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>

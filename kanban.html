@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kanban — Multiple views into the same project</title>
+  <meta name="description" content="UAssist’s kanban board supports multiple views: status, assignments, risk, sprints, and a milestone roadmap. Clarity is the point." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist <span>/ Kanban</span></div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Clarity is the point.</h1>
+      <p class="lede">The kanban is the heart of UAssist. It is not a single board. It is one dataset shown several ways, so you can choose the right lens for the decision in front of you.</p>
+    </div>
+  </section>
+
+  <article class="wrap narrow">
+
+    <section id="default-view">
+      <h2>Default view: status and category</h2>
+      <p>The default board shows status across the top and category down the side:</p>
+      <ul>
+        <li><strong>Columns:</strong> open, active, blocked, review, done.</li>
+        <li><strong>Rows:</strong> Systems, Gameplay, AI, UI, Audio, Art, Narrative, Infra.</li>
+        <li><strong>Swimlanes:</strong> milestones separate each phase vertically.</li>
+      </ul>
+      <p>Cards can be dragged between columns. The move is optimistic: the card shifts immediately, then the server confirms. If the server rejects it, the card slides back. Dragging is the fastest way to update status.</p>
+    </section>
+
+    <section id="views">
+      <h2>Built-in views</h2>
+      <p>The view dropdown changes the lens without changing the data:</p>
+      <ul>
+        <li><strong>Plan</strong> — status by category with milestone swimlanes. The default.</li>
+        <li><strong>Assignments</strong> — rows grouped by assignee, so you can see who owns what.</li>
+        <li><strong>Risk radar</strong> — cards arranged by risk and dependency, highlighting blockers.</li>
+        <li><strong>Sprint board</strong> — a time-boxed slice for short milestones or deadlines.</li>
+        <li><strong>Flat</strong> — every card in one scrollable list, useful for search and bulk triage.</li>
+      </ul>
+      <div class="callout">
+        <p><strong>One dataset, many questions.</strong> The board answers “what is blocked?” in Risk radar, “who is overloaded?” in Assignments, and “what is the plan?” in the default view.</p>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2>Roadmap view</h2>
+      <p>The Roadmap button replaces the grid with a timeline of milestones. Each row shows the milestone name, a progress bar, and a percentage. Click a milestone to jump back to the board and see its cards.</p>
+      <p>Roadmap is not a separate plan. It is the same cards and statuses, just arranged to answer “how are we doing against the phases?”</p>
+    </section>
+
+    <section id="health">
+      <h2>Health lane</h2>
+      <p>At the bottom of the board is the health lane. It shows validator findings: compile errors, missing references, licence issues, budget overruns, and agent results awaiting review. Each item is a small pill. Click it and you land on the card or asset it concerns.</p>
+      <p>When a validator stops seeing an issue, the item auto-closes. You do not manually clean it up.</p>
+    </section>
+
+    <section id="search">
+      <h2>Search and focus</h2>
+      <p>The search box filters cards by title, description, or anchor path. Combine it with a view to drill into a subset. For example, search “turret” in Risk radar to see every turret-related card and its blockers at once.</p>
+      <div class="aside">A board should reduce anxiety, not add to it. If the view is too dense, change the lens.</div>
+    </section>
+
+    <section id="clarity">
+      <h2>Why clarity matters</h2>
+      <p>Game projects fail when the plan drifts out of sync with reality. UAssist’s kanban keeps the plan visible, updated, and tied to real files. The multiple views are not feature creep. They are different ways to ask the same question: what should I work on next?</p>
+      <blockquote>
+        “What you do not want is a tool that adds a layer of complexity. You want a tool that removes the need for one.” — DHH, 37signals
+      </blockquote>
+      <p>UAssist tries to be that simpler layer.</p>
+    </section>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>

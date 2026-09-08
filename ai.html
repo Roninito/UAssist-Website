@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI — How UAssist contextualizes your project</title>
+  <meta name="description" content="UAssist configures local and remote AI providers, gives the assistant project context, and lets you create or discuss tasks through chat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist <span>/ AI</span></div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>AI that knows the project.</h1>
+      <p class="lede">UAssist connects to the providers you choose, gives the assistant a grounded view of your cards and assets, and lets you turn conversation into work.</p>
+    </div>
+  </section>
+
+  <article class="wrap narrow">
+
+    <section id="providers">
+      <h2>Bring your own model</h2>
+      <p>UAssist does not bundle a language model. You configure one or more providers in the AI settings panel. Supported options include local models through <strong>Ollama</strong> or <strong>LM Studio</strong>, and remote providers like <strong>OpenAI</strong>, <strong>Anthropic</strong>, or any OpenAI-compatible endpoint.</p>
+      <p>Each provider has its own API key, endpoint, default model, and spending cap. You can assign different providers to chat and agent tasks, or keep everything local.</p>
+      <div class="tip">
+        <p>Start local. UAssist works fine with a small local model for planning and discussion. Agents are usually better with a stronger model, so you can route them separately.</p>
+      </div>
+    </section>
+
+    <section id="context">
+      <h2>Context from the project, not from memory</h2>
+      <p>When you chat with the assistant inside UAssist, it does not rely on a long conversation history. It reads the current project state:</p>
+      <ul>
+        <li>The active board and selected view.</li>
+        <li>The card or document you are currently looking at.</li>
+        <li>Anchored file paths and whether they exist.</li>
+        <li>Open health items and recent job results.</li>
+        <li>Project conventions saved from earlier agent jobs.</li>
+      </ul>
+      <p>This means you can ask “what is blocking the turret card?” and get an answer based on the actual board. You can ask “split this card into smaller tasks” and the assistant will propose real cards with proper anchors.</p>
+    </section>
+
+    <section id="chat">
+      <h2>Chat that creates tasks</h2>
+      <p>Every card and every document has a chat thread. The chat is not a side feature. It is a way to edit the project.</p>
+      <ul>
+        <li><strong>Discuss a card.</strong> Ask why it is blocked, what the acceptance criteria mean, or how to verify it.</li>
+        <li><strong>Rewrite a card.</strong> Tell the assistant the description is unclear and ask for a better one.</li>
+        <li><strong>Create cards.</strong> Describe a new feature and let the assistant propose a card with anchors and a milestone.</li>
+        <li><strong>Write docs.</strong> Ask the assistant to expand an architecture note from a chat message.</li>
+      </ul>
+      <div class="callout">
+        <p><strong>Clarity beats cleverness.</strong> The chat is useful because it is grounded. A generic chatbot guesses. UAssist knows what you are looking at.</p>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy by design</h2>
+      <p>Your project files stay on your machine. If you use a local model, nothing leaves your machine at all. If you use a remote provider, only the context you explicitly send goes out. UAssist does not phone home.</p>
+      <p>You set cost caps per provider. The assistant cannot rack up charges because the server stops it at the limit.</p>
+    </section>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>

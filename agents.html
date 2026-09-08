@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agents — How UAssist works with AI teammates</title>
+  <meta name="description" content="A technical guide to using agents in UAssist: what they are good at, how they are isolated, and how they integrate with Unity, Blender, and project chat." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="theme.css" />
+</head>
+<body>
+
+  <header class="rail">
+    <div class="wrap">
+      <div class="brand">UAssist <span>/ Agents</span></div>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Agents that work like teammates.</h1>
+      <p class="lede">UAssist does not replace your judgment. It gives AI agents a safe, scoped way to do the parts of game development that can be verified by running them.</p>
+    </div>
+  </section>
+
+  <article class="wrap narrow">
+
+    <section id="what-are-agents">
+      <h2>What agents are in UAssist</h2>
+      <p>Agents are CLI tools installed on your machine. UAssist currently supports <strong>Claude Code</strong> and <strong>opencode</strong>. More adapters are coming. UAssist does not host the agent; it calls the binary you already have, in a directory it prepares, with a context packet it assembles.</p>
+      <p>The agent sees only what UAssist gives it. That includes the card description, the anchored file paths, related project conventions, and recent chat. It does not see your entire hard drive, your browser history, or unrelated projects.</p>
+    </section>
+
+    <section id="worktree-model">
+      <h2>The worktree model</h2>
+      <p>When you dispatch a card, UAssist creates a git worktree named after the job. The agent edits inside that worktree. Your main working tree is untouched.</p>
+      <pre>project/
+  .git/
+  Assets/               # your main tree, safe
+  .uassist/
+    worktrees/
+      job-114/          # agent edits here
+        Assets/Scripts/Player/PlayerShip.cs</pre>
+      <p>When the agent finishes, UAssist computes a diff between the worktree and your base branch. You review the diff inside the card detail panel. If it looks right, you click <strong>Accept</strong> and the change merges in. If it does not, you click <strong>Reject</strong> and the worktree is discarded.</p>
+      <div class="callout">
+        <p><strong>Clarity comes from separation.</strong> You cannot accidentally break the project because you never let the agent touch the project directly.</p>
+      </div>
+    </section>
+
+    <section id="good-tasks">
+      <h2>Tasks agents handle well</h2>
+      <ul>
+        <li><strong>Code that compiles.</strong> C# scripts, shader stubs, JSON config, editor tooling.</li>
+        <li><strong>Blender Python.</strong> Procedural models, batch export scripts, socket naming conventions.</li>
+        <li><strong>Refactoring.</strong> Rename a field across several files, split a large class, move assets into folders.</li>
+        <li><strong>Boilerplate.</strong> New MonoBehaviour stubs, new prefab wiring, repetitive inspector setup.</li>
+        <li><strong>Tests and linting.</strong> Add validation logic, format code, fix warnings.</li>
+      </ul>
+    </section>
+
+    <section id="bad-tasks">
+      <h2>Tasks agents should not touch</h2>
+      <ul>
+        <li><strong>Creative composition.</strong> Level layout, lighting feel, animation timing. A diff cannot tell you if it feels right.</li>
+        <li><strong>High-stakes design decisions.</strong> Changing the core loop, the scoring model, or the art direction. These are human calls.</li>
+        <li><strong>Anything you cannot verify quickly.</strong> If you cannot run it and see the result, do not dispatch it.</li>
+      </ul>
+      <div class="aside">As DHH wrote, “The best way to build software is to start with something simple and iterate.” Agents excel at iterations once the direction is clear.</div>
+    </section>
+
+    <section id="unity-blender">
+      <h2>Unity and Blender in one job</h2>
+      <p>A single card can have multiple anchors. A card called <em>Build turret enemy</em> can anchor to:</p>
+      <ul>
+        <li><code>Assets/Scripts/Enemies/Turret.cs</code></li>
+        <li><code>Assets/Models/Enemies/Turret.blend</code></li>
+        <li><code>Assets/Prefabs/Enemies/Turret.prefab</code></li>
+      </ul>
+      <p>The agent receives all three paths in its context. It can update the Blender model with named sockets, write the C# controller that rotates those sockets, and leave notes about what the prefab needs. After you accept the diff, you rescanned the workspace and the catalog catches up.</p>
+    </section>
+
+    <section id="context-packet">
+      <h2>What goes into the context packet</h2>
+      <p>UAssist builds the packet from stable project data:</p>
+      <ul>
+        <li>The card title, description, and acceptance criteria.</li>
+        <li>Anchors: file paths, asset types, and whether they exist.</li>
+        <li>Project conventions you have saved from earlier jobs.</li>
+        <li>Recent chat messages on the card.</li>
+        <li>The output of relevant validators, if any.</li>
+      </ul>
+      <p>The packet is editable before dispatch. If you want the agent to ignore a file or focus on a specific function, you change the packet. This is faster than rewriting the prompt from scratch.</p>
+    </section>
+
+    <section id="cost-and-time">
+      <h2>Cost caps and timeouts</h2>
+      <p>Every dispatch has a maximum cost in USD and a maximum duration in minutes. UAssist passes these to the adapter. If the agent runs long, it is stopped. If it burns through the budget, it is stopped. You are never surprised by a bill.</p>
+    </section>
+
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>UAssist — RastaCamp Studio</span>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="install.html">Install</a>
+        <a href="kanban.html">Kanban</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="ai.html">AI</a>
+        <a href="agents.html">Agents</a>
+        <a href="server.html">Server</a>
+        <a href="asteroid-run.html">Asteroid Run</a>
+      </nav>
+      <span>ToolwrightTheme</span>
+    </div>
+  </footer>
+
+</body>
+</html>
