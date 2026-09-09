@@ -523,17 +523,24 @@ pre code {
 .p-green { background: var(--pill-green); color: var(--pill-green-text); }
 
 /* ---------- cta section ---------- */
-.cta-section {
+.cta-section,
+.release-section {
   text-align: center;
   background: var(--surface-2);
   border-top: 1px solid var(--line);
 }
 
-.cta-section h2 {
+.release-section {
+  background: var(--surface);
+}
+
+.cta-section h2,
+.release-section h2 {
   margin-bottom: var(--gap-sm);
 }
 
-.cta-section .lead {
+.cta-section .lead,
+.release-section .lead {
   margin: 0 auto var(--gap-md);
 }
 
